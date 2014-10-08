@@ -133,7 +133,8 @@ $strip.each_date do |date|
 	uri = $strip.uri(date)
 	body = Net::HTTP.get(uri)
 	html = Nokogiri::HTML(body)
-	src = html.css('img.strip').first['src'] rescue nil
+	img = html.css('div > img.strip')
+	src = img.first['src'] rescue nil
 	if src.nil?
 		$logger << "failed to get #{uri}"
 		next

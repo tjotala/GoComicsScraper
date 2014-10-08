@@ -136,6 +136,10 @@ $strip.each_date do |date|
 	img = html.css('div > img.strip')
 	src = img.first['src'] rescue nil
 	if src.nil?
+		img = html.css('p > img.strip')
+		src = img.first['src'] rescue nil
+	end
+	if src.nil?
 		$logger << "failed to get #{uri}"
 		next
 	end

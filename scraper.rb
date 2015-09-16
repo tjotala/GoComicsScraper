@@ -147,7 +147,7 @@ $strip.each_date do |date|
 	$logger << "#{src} --> #{filename}"
 
 	if $strip.has_uri?(src)
-		$strip.exclude(filename)
+		$strip.exclude_file(filename)
 	else
 		image = Net::HTTP.get(URI(src))
 		File.open(filename, 'wb') { |f| f.write(image) }
